@@ -1,12 +1,369 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <li
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Miso Ramen Museum — Where Every Bowl Tells a Story</title>
+<meta name="description" content="The Miso Ramen Museum is dedicated to the history, culture, and craft behind Japan's most comforting bowl of soup.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Lets the stylesheet hide elements until GSAP reveals them (script.js removes it if GSAP can't run) -->
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ NAV ============ -->
+<header class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="The Miso Ramen Museum, home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path class="bowl-steam" d="M14 10 C 12 15, 17 15, 15 20" />
+        <path class="bowl-steam bowl-steam--2" d="M24 8 C 22 13, 27 13, 25 18" />
+        <path class="bowl-steam bowl-steam--3" d="M34 10 C 32 15, 37 15, 35 20" />
+        <path class="bowl-body" d="M6 24 C 6 24 8 38 24 38 C 40 38 42 24 42 24 Z" />
+        <path class="bowl-rim" d="M4 22 H44" />
+      </svg>
+      <span class="brand-word">The&nbsp;Miso&nbsp;Ramen<br>Museum</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Section">
+      <a href="#keepers" data-nav>The Keepers</a>
+      <a href="#history" data-nav>History</a>
+      <a href="#culture" data-nav>Culture</a>
+      <a href="#recipe" data-nav>Recipe</a>
+      <a href="#sources" data-nav>Sources</a>
+    </nav>
+  </div>
+  <div class="broth-progress" aria-hidden="true"><span id="brothFill"></span></div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-media">
+      <img
+        src="https://images.unsplash.com/photo-1742633882711-ef7b3cee63d7?auto=format&fit=crop&w=2400&q=80"
+        alt="An overhead view of a rich miso ramen bowl with pork, egg, and noodles, steam rising from the broth"
+        class="hero-img"
+        fetchpriority="high"
+        decoding="async">
+      <div class="hero-scrim"></div>
+    </div>
+
+    <div class="hero-steam" aria-hidden="true">
+      <span class="wisp w1"></span>
+      <span class="wisp w2"></span>
+      <span class="wisp w3"></span>
+      <span class="fleck f1"></span>
+      <span class="fleck f2"></span>
+      <span class="fleck f3"></span>
+      <span class="fleck f4"></span>
+      <span class="fleck f5"></span>
+      <span class="fleck f6"></span>
+    </div>
+
+    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title" id="heroTitle">
+        <span class="word">The</span>
+        <span class="word">Miso</span>
+        <span class="word">Ramen</span>
+        <span class="word">Museum</span>
+      </h1>
+      <p class="hero-subtitle" id="heroSubtitle">Where Every Bowl Tells a Story</p>
+    </div>
+
+    <a href="#statement" class="scroll-cue" aria-label="Scroll to learn more">
+      <span class="scroll-cue-line"></span>
+      <span class="scroll-cue-label">Scroll</span>
+    </a>
+  </section>
+
+  <!-- ============ STATEMENT ============ -->
+  <section class="statement" id="statement">
+    <p class="statement-eyebrow reveal">A single idea, simmered for centuries</p>
+    <h2 class="statement-text char-reveal reveal reveal--pop">All History Comes From a Bowl</h2>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="overview" id="overview">
+    <div class="overview-intro">
+      <h2 class="char-reveal reveal">Welcome to the Miso Ramen Museum!</h2>
+      <p class="reveal">
+        Here, you can dig as much knowledge as possible about the origin of this iconic dish as well as learn the art of creating it yourself.
+        While there are many different kinds of ramen like shoyu, shio, miso, and tonkotsu, we believe that Miso ramen stands apart the most.
+        It is not just a regular bowl of noodles, but a combination of rich soup and crafted noodles with a fascinating history behind its flavor.
+        Looking back at its journey, it evolved from a mere Chinese noodle to a special dish in Japan. This iconic dish carries a mind-blowing
+        culture and meaning. What began as an essential food during crisis has now become one of Japan's most popular comfort dishes.
+      </p>
+    </div>
+
+    <h3 class="find-heading char-reveal reveal">What You Can Find On Our Website</h3>
+
+    <div class="find-grid">
+
+      <a href="#history" class="find-card reveal reveal--pop">
+        <span class="find-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/></svg>
+        </span>
+        <h4>Detailed History Timeline of Ramen</h4>
+        <p>Explore and understand how a basic Chinese noodle got transformed into an iconic Ramen dish.</p>
+      </a>
+
+      <a href="#culture" class="find-card reveal reveal--pop">
+        <span class="find-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="4.5" y1="9" x2="19.5" y2="9"/><line x1="6" y1="6" x2="6" y2="20"/><line x1="18" y1="6" x2="18" y2="20"/></svg>
+        </span>
+        <h4>The Culture behind Ramen</h4>
+        <p>Learn what Ramen meant to the Japanese locals and their culture which made Ramen their iconic dish.</p>
+      </a>
+
+      <a href="#recipe" class="find-card reveal reveal--pop">
+        <span class="find-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 11h16a8 8 0 0 1-16 0Z"/><line x1="8" y1="11" x2="8" y2="8"/><line x1="16" y1="11" x2="16" y2="8"/></svg>
+        </span>
+        <h4>What is in the Ramen</h4>
+        <p>Discover the ingredients required to make Miso Ramen using modern techniques.</p>
+      </a>
+
+      <a href="#sources" class="find-card reveal reveal--pop">
+        <span class="find-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 6c-1.8-1.4-4-2-7-2v13c3 0 5.2.6 7 2 1.8-1.4 4-2 7-2V4c-3 0-5.2.6-7 2Z"/><line x1="12" y1="6" x2="12" y2="19"/></svg>
+        </span>
+        <h4>Sources</h4>
+        <p>If you want to learn more deeply about Ramen, you can check our sources page.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ INGREDIENT STRIP (decorative) ============ -->
+  <section class="ingredient-strip" aria-hidden="true">
+    <div class="ingredient-marquee">
+      <div class="ingredient-track">
+        Miso <span class="dot">◦</span> Kombu Dashi <span class="dot">◦</span> Chili Oil <span class="dot">◦</span> Scallion <span class="dot">◦</span> Soft-Boiled Egg <span class="dot">◦</span> Chashu Pork <span class="dot">◦</span> Nori <span class="dot">◦</span> Bamboo Shoot <span class="dot">◦</span> Toasted Sesame <span class="dot">◦</span> Hand-Pulled Noodles <span class="dot">◦</span>
+      </div>
+      <div class="ingredient-track">
+        Miso <span class="dot">◦</span> Kombu Dashi <span class="dot">◦</span> Chili Oil <span class="dot">◦</span> Scallion <span class="dot">◦</span> Soft-Boiled Egg <span class="dot">◦</span> Chashu Pork <span class="dot">◦</span> Nori <span class="dot">◦</span> Bamboo Shoot <span class="dot">◦</span> Toasted Sesame <span class="dot">◦</span> Hand-Pulled Noodles <span class="dot">◦</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="keepers" id="keepers">
+    <div class="section-head reveal reveal--down">
+      <h2 class="char-reveal">The Certified Ramen Experts</h2>
+      <p>Four people who have spent their careers analyzing ramens</p>
+    </div>
+
+    <div class="keepers-grid">
+
+      <article class="keeper-card reveal reveal--pop">
+        <div class="keeper-photo">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80"
+               alt="Portrait of Aiko Tanaka" loading="lazy" decoding="async">
+        </div>
+        <h3>Ferdi</h3>
+        <p class="keeper-role">The Web Master & Visual Editor</p>
+        <p class="keeper-desc">Designed the website layout and created the Home/Overview Page & Visual Gallery.</p>
+      </article>
+
+      <article class="keeper-card reveal reveal--pop">
+        <div class="keeper-photo">
+          <img src="https://images.unsplash.com/photo-1595211877493-41a4e5f236b3?auto=format&fit=crop&w=800&q=80"
+               alt="Portrait of Kenji Sato" loading="lazy" decoding="async">
+        </div>
+        <h3>Robert</h3>
+        <p class="keeper-role">The Food Historian</p>
+        <p class="keeper-desc">Researched and wrote the History & Origin page.</p>
+      </article>
+
+      <article class="keeper-card reveal reveal--pop">
+        <div class="keeper-photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+               alt="Portrait of Haruto Mori" loading="lazy" decoding="async">
+        </div>
+        <h3>Jeriko</h3>
+        <p class="keeper-role">Culinary Anthropologist</p>
+        <p class="keeper-desc">Researched and wrote the Cultural & Social Impact page.</p>
+      </article>
+
+      <article class="keeper-card reveal reveal--pop">
+        <div class="keeper-photo">
+          <img src="https://images.unsplash.com/photo-1627161683077-e34782c24d81?auto=format&fit=crop&w=800&q=80"
+               alt="Portrait of Emi Nakashima" loading="lazy" decoding="async">
+        </div>
+        <h3>Victoria</h3>
+        <p class="keeper-role">The Culinary Specialist</p>
+        <p class="keeper-desc">Researched and wrote the Recipe, Ingredients & Science page.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="divider-band"><div class="ignite-divider"></div></div>
+
+  <!-- ============ MISO RAMEN GALLERY ============ -->
+  <section class="miso-gallery" aria-labelledby="gallery-title">
+    <div class="section-head reveal reveal--down">
+      <p class="gallery-kicker">A bowl in close-up</p>
+      <h2 id="gallery-title" class="char-reveal">Miso Ramen, Made Visible</h2>
+      <p>Golden broth, springy noodles, and the small details that make a bowl feel like home.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item--feature media-reveal">
+        <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1400&q=85"
+             alt="Miso ramen topped with a soft-boiled egg, greens, and chili oil" loading="lazy" decoding="async">
+        <figcaption>Rich broth, bright toppings</figcaption>
+      </figure>
+      <figure class="gallery-item reveal reveal--pop">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=85"
+             alt="A steaming bowl of ramen with noodles and sliced toppings" loading="lazy" decoding="async">
+        <figcaption>The warmth of the first spoonful</figcaption>
+      </figure>
+      <figure class="gallery-item reveal reveal--pop">
+        <img src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&w=900&q=85"
+             alt="Close-up of ramen noodles in a ceramic bowl" loading="lazy" decoding="async">
+        <figcaption>Noodles carry the broth</figcaption>
+      </figure>
+      <figure class="gallery-item reveal reveal--pop">
+        <img src="https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&w=900&q=85"
+             alt="Miso ramen garnished with egg, scallions, and nori" loading="lazy" decoding="async">
+        <figcaption>Every topping has a purpose</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ HISTORY (placeholder) ============ -->
+  <section class="content-block" id="history">
+    <div class="content-media media-reveal">
+      <img src="https://images.unsplash.com/photo-1706128999187-327ac1ef054e?auto=format&fit=crop&w=1600&q=80"
+           alt="A traditional bowl of ramen with noodles, meat, and vegetables on a wooden table" loading="lazy" decoding="async">
+    </div>
+    <div class="content-copy reveal reveal--right">
+      <h2 class="char-reveal">History</h2>
+      <div class="placeholder-block" aria-label="History content placeholder">
+        <span class="placeholder-line" style="--w:92%"></span>
+        <span class="placeholder-line" style="--w:100%"></span>
+        <span class="placeholder-line" style="--w:78%"></span>
+        <span class="placeholder-line" style="--w:88%"></span>
+        <span class="placeholder-line" style="--w:60%"></span>
+      </div>
+      <p class="placeholder-note">Full history to come.</p>
+    </div>
+  </section>
+
+  <div class="divider-band"><div class="ignite-divider"></div></div>
+
+  <!-- ============ CULTURE (placeholder) ============ -->
+  <section class="content-block content-block--reverse" id="culture">
+    <div class="content-media media-reveal media-reveal--right">
+      <img src="https://images.unsplash.com/photo-1653697469211-ae71a516b99d?auto=format&fit=crop&w=1600&q=80"
+           alt="A bowl of ramen served with chopsticks, presented on a plate" loading="lazy" decoding="async">
+    </div>
+    <div class="content-copy reveal reveal--left">
+      <h2 class="char-reveal">Culture &amp; Meaning</h2>
+      <div class="placeholder-block" aria-label="Culture and meaning content placeholder">
+        <span class="placeholder-line" style="--w:85%"></span>
+        <span class="placeholder-line" style="--w:96%"></span>
+        <span class="placeholder-line" style="--w:70%"></span>
+        <span class="placeholder-line" style="--w:90%"></span>
+      </div>
+      <p class="placeholder-note">Full write-up to come.</p>
+    </div>
+  </section>
+
+  <div class="divider-band"><div class="ignite-divider"></div></div>
+
+  <!-- ============ RECIPE (placeholder) ============ -->
+  <section class="content-block" id="recipe">
+    <div class="content-media media-reveal">
+      <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1600&q=80"
+           alt="Close-up of a ramen bowl topped with egg and chili, showing the ingredients" loading="lazy" decoding="async">
+    </div>
+    <div class="content-copy reveal reveal--right">
+      <h2 class="char-reveal">The Recipe &amp; Ingredients</h2>
+      <div class="placeholder-block" aria-label="Recipe and ingredients content placeholder">
+        <span class="placeholder-line" style="--w:80%"></span>
+        <span class="placeholder-line" style="--w:94%"></span>
+        <span class="placeholder-line" style="--w:65%"></span>
+        <span class="placeholder-line" style="--w:87%"></span>
+        <span class="placeholder-line" style="--w:73%"></span>
+      </div>
+      <p class="placeholder-note">Ingredient list and method to come.</p>
+    </div>
+  </section>
+
+  <!-- ============ SOURCES (placeholder) ============ -->
+  <section class="sources" id="sources">
+    <div class="section-head reveal reveal--left">
+      <h2 class="char-reveal">Sources</h2>
+      <p>Every claim in this museum will be traced back to where it came from.</p>
+    </div>
+    <ol class="sources-list">
+      <li class="reveal reveal--left"><span class="placeholder-line" style="--w:70%"></span></li>
+      <li class="reveal reveal--right"><span class="placeholder-line" style="--w:55%"></span></li>
+      <li class="reveal reveal--left"><span class="placeholder-line" style="--w:82%"></span></li>
+      <li class="reveal reveal--right"><span class="placeholder-line" style="--w:63%"></span></li>
+    </ol>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <p class="footer-brand char-reveal reveal reveal--pop">The Miso Ramen Museum</p>
+  <p class="footer-tag reveal">A museum of steam, salt, and memory.</p>
+  <div class="footer-bottom reveal">
+    <p>&copy; <span id="year"></span> The Miso Ramen Museum</p>
+    <a href="#top" class="back-to-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- Loads GSAP (cdnjs, then jsDelivr, then an optional local vendor/ folder), then script.js -->
+<script>
+(function () {
+  var bases = [
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/",
+    "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/",
+    "vendor/"
+  ];
+  function load(src, next, ok) {
+    var s = document.createElement("script");
+    s.src = src;
+    s.onload = function () { ok(true); };
+    s.onerror = function () { s.remove(); next(); };
+    document.body.appendChild(s);
+  }
+  function loadFile(file, done, i) {
+    i = i || 0;
+    if (i >= bases.length) return done(false);
+    load(bases[i] + file, function () { loadFile(file, done, i + 1); }, done);
+  }
+  function main() {
+    var s = document.createElement("script");
+    s.src = "script.js";
+    document.body.appendChild(s);
+  }
+  loadFile("gsap.min.js", function (gsapOk) {
+    if (!gsapOk) return main();
+    loadFile("ScrollTrigger.min.js", main);
+  });
+})();
+</script>
 </body>
 </html>
