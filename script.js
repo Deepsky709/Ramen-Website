@@ -201,12 +201,11 @@
 
     intro
       .fromTo(".hero-img",
-        { scale: 1.18, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 2.6, ease: "power2.out" }, 0)
-      .from(".site-nav .nav-inner", { y: -20, opacity: 0, duration: 1 }, 0.4)
-      .from(words, { yPercent: 115, duration: 1.2, ease: "power4.out", stagger: 0.12 }, 0.35)
-      .from(".hero-subtitle", { y: 18, opacity: 0, duration: 1 }, ">-0.6")
-      .from(".scroll-cue", { opacity: 0, duration: 1 }, ">-0.4");
+        { opacity: 0 },
+        { opacity: 1, duration: 0.65, ease: "power2.out" }, 0)
+      .from(words, { yPercent: 18, duration: 0.55, ease: "power3.out", stagger: 0.04 }, 0.2)
+      .from(".hero-subtitle", { y: 6, opacity: 0, duration: 0.5 }, ">-0.3")
+      .from(".scroll-cue", { opacity: 0, duration: 0.35 }, ">-0.2");
 
     // Elements were hidden by CSS until now; reveal the (already positioned) containers.
     gsap.set([".hero-title", ".hero-subtitle", ".scroll-cue"], { visibility: "visible" });
@@ -298,9 +297,17 @@
         else from.y = 32;
       }
 
+      var isStatementEyebrow = el.classList.contains("statement-eyebrow");
+
       gsap.fromTo(el, from, {
-        opacity: 1, x: 0, y: 0, duration: 1.2, ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: TOGGLE }
+        opacity: 1, x: 0, y: 0,
+        duration: isStatementEyebrow ? 0.55 : 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: isStatementEyebrow ? "top 96%" : "top 88%",
+          toggleActions: TOGGLE
+        }
       });
     });
 

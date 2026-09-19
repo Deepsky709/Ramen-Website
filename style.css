@@ -188,9 +188,15 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   background: var(--ink);
 }
 
-.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media {
+  position: absolute; inset: 0; z-index: -2;
+  will-change: transform;
+  transform: translateZ(0);
+}
 .hero-img {
   width: 100%; height: 100%; object-fit: cover;
+  will-change: opacity;
+  backface-visibility: hidden;
 }
 .hero-scrim {
   position: absolute; inset: 0;
@@ -327,7 +333,6 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 .js .ignite-divider { opacity: 0; }
 
 .js .char-reveal,
-.js .hero-title,
 .js .hero-subtitle,
 .js .scroll-cue { visibility: hidden; }
 
@@ -542,8 +547,8 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   max-width: var(--max-w);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
-  grid-template-rows: repeat(2, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
   gap: 1rem;
 }
 .gallery-item {
@@ -554,10 +559,6 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   border-radius: 6px;
   background: var(--ink-soft);
   aspect-ratio: 4 / 3;
-}
-.gallery-item--feature {
-  grid-row: span 2;
-  aspect-ratio: auto;
 }
 .gallery-item img {
   width: 100%;
@@ -803,7 +804,6 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
   .keepers-grid { grid-template-columns: repeat(2, 1fr); }
   .find-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-  .gallery-item--feature { grid-row: auto; aspect-ratio: 4 / 3; }
   .content-block,
   .content-block--reverse { grid-template-columns: 1fr; }
   .content-block--reverse .content-media,
@@ -813,8 +813,6 @@ button { font: inherit; background: none; border: none; cursor: pointer; }
 @media (max-width: 560px) {
   .find-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
-  .gallery-item,
-  .gallery-item--feature { aspect-ratio: 4 / 3; }
 }
 
 @media (max-width: 720px) {
